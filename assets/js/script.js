@@ -49,6 +49,7 @@ const questions = [
 ]
 
 // element ref
+let highScoreList = document.getElementById("highScoreList")
 let timer = document.getElementById("timer");
 let timeLeft = document.getElementById("timeLeft");
 let timesUp = document.getElementById("timesUp");
@@ -57,7 +58,7 @@ let startBox = document.getElementById("startBox");
 let startQuiz = document.getElementById("startQuiz");
 
 let questionBox = document.getElementById("questionBox");
-let questionsState = document.getElementById("questionState");
+let questionState = document.getElementById("questionState");
 let alpha = document.getElementById("btn0");
 let bravo = document.getElementById("btn1");
 let charlie = document.getElementById("btn2");
@@ -66,6 +67,9 @@ let checkAnswer = document.getElementById("checkAnswer");
 
 let finishBox = document.getElementById("finishBox");
 let finalScore = document.getElementById("finalScore");
+
+let highScoreBox = document.getElementById("highScoreBox");
+let listOfScores = document.getElementById("listOfScores");
 
 // let inLine = document.getElementById("inLine");
 
@@ -84,11 +88,21 @@ charlie.addEventListener("click",chooseCharlie);
 delta.addEventListener("click", chooseDelta);
 
 
-let totalTime = 91
+highScoreSubmit.addEventListener("click", function(event) {
+    highScores(event);
+});
+
+highScoreList.addEventListener("click", function() {
+    highScoreBox.style.display = "block";
+    startBox.style.display = "none";
+});
+
+
+// let totalTime = 60
 
 function start() {
     questionIndex = 0;
-    totalTime = 90;
+    totalTime = 60;
     timeLeft.textContent = totalTime;
     // initialInput.textContent = "";
     
@@ -117,7 +131,7 @@ function showQuiz() {
 }
 
 function nextQuestion () {
-    questionsState.textContent = questions[questionIndex].question;
+    questionState.textContent = questions[questionIndex].question;
     alpha.textContent = questions[questionIndex].option[0];
     bravo.textContent = questions[questionIndex].option[1];
     charlie.textContent = questions[questionIndex].option[2];
@@ -161,8 +175,65 @@ function gameOver() {
 
     finalScore.textContent = correct;
 
+}
     // local storage
 
+function highScores(event) {
+    event.preventDefault();
 
+finishBox.style.display = "none";
+highScoreBox.style.display = "block";
+highScoreList.style.display = "none";
+
+let savedHighScores = localStorage.getItem("high scores");
+let scoresArray;
+
+if (savedHighScores === null) {
+    scoresArray = [];
+} else {
+    scoresArray = JSON.parse(savedHighScores)
+}
+
+let userScore = {
+    initials: userInput.value,
+    score: finalScore.textContent
+
+};
+
+scoresArray.push(userScore);
+
+let scoresArrayString = JSON.stringify(scoresArray);
+window.localStorage.setItem("high scores", scoresArrayString);
+
+showHighScores()
 
 }
+
+var i=0;
+function showHighScores() {
+
+    startBox.style.display = "none";
+    questionBox.style.display = "none";
+    finishBox.style.display = "none";
+    highScoreBox.style.display = "block";
+
+    let savedHighScores = localStorage.getItem("high scores");
+
+    if (savedHighScores === null) {
+        return;
+    }
+    
+    let storedHighScores = JSON.parse(savedHighScores);
+
+    for (; i < storedHighScores.length; i++) {
+        let eachHighScore = documnet.createElement("p");
+        eachHighScore.innerHTML = storedHighScores [i].initials + "; " + storedHighScores[i].score;
+        listOfScores.appendChild(eachHighScore);
+    }
+};
+
+
+
+
+
+
