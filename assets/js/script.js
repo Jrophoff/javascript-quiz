@@ -63,15 +63,16 @@ let alpha = document.getElementById("btn0");
 let bravo = document.getElementById("btn1");
 let charlie = document.getElementById("btn2");
 let delta = document.getElementById("btn3");
-let checkAnswer = document.getElementById("checkAnswer");
 
 let finishBox = document.getElementById("finishBox");
 let finalScore = document.getElementById("finalScore");
+let userInput = document.getElementById("userInput")
+let highScoreSubmit = document.getElementById("highScoreSubmit");
 
 let highScoreBox = document.getElementById("highScoreBox");
 let listOfScores = document.getElementById("listOfScores");
 
-// let inLine = document.getElementById("inLine");
+
 
 // variables
 let questionIndex = 0;
@@ -98,13 +99,13 @@ highScoreList.addEventListener("click", function() {
 });
 
 
-// let totalTime = 60
+
 
 function start() {
     questionIndex = 0;
     totalTime = 60;
     timeLeft.textContent = totalTime;
-    // initialInput.textContent = "";
+    
     
     startBox.style.display = "none";
     questionBox.style.display = "block";
@@ -140,17 +141,12 @@ function nextQuestion () {
 
 function verifyAnswer(answer) {
 
-    // let inLine = document.getElementById("inLine");
-    // inLine.style.display = "block";
-    checkAnswer.style.display = "block";
 
     if (questions[questionIndex].answer === questions[questionIndex].option[answer]) {
         correct++;
-        checkAnswer.textContent = "Correct!";
     } else {
         totalTime -= 10;
         timeLeft.textContent = totalTime;
-        checkAnswer.textContent = "wrong!";
 
     }
 
@@ -176,40 +172,44 @@ function gameOver() {
     finalScore.textContent = correct;
 
 }
-    // local storage
-
+   
 function highScores(event) {
     event.preventDefault();
+
+    
 
 finishBox.style.display = "none";
 highScoreBox.style.display = "block";
 highScoreList.style.display = "none";
 
+ // local storage
+
+
 let savedHighScores = localStorage.getItem("high scores");
-let scoresArray;
+let scoreArray;
 
 if (savedHighScores === null) {
-    scoresArray = [];
+    scoreArray = [];
 } else {
-    scoresArray = JSON.parse(savedHighScores)
+    scoreArray = JSON.parse(savedHighScores)
 }
 
-let userScore = {
+var userScore = {
     initials: userInput.value,
-    score: finalScore.textContent
+    score: finalScore.textContent,
 
 };
 
-scoresArray.push(userScore);
+scoreArray.push(userScore);
 
-let scoresArrayString = JSON.stringify(scoresArray);
-window.localStorage.setItem("high scores", scoresArrayString);
+let scoreArrayString = JSON.stringify(scoreArray);
+window.localStorage.setItem("high scores", scoreArrayString);
 
 showHighScores()
 
 }
 
-var i=0;
+var i = 0;
 function showHighScores() {
 
     startBox.style.display = "none";
@@ -227,7 +227,7 @@ function showHighScores() {
 
     for (; i < storedHighScores.length; i++) {
         let eachHighScore = documnet.createElement("p");
-        eachHighScore.innerHTML = storedHighScores [i].initials + "; " + storedHighScores[i].score;
+        eachHighScore.innerHTML = storedHighScores[i].initials + "; " + storedHighScores[i].score;
         listOfScores.appendChild(eachHighScore);
     }
 };

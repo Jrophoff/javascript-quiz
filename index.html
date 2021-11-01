@@ -46,21 +46,21 @@
         <div id="questionBox" class="bg-light rounded p-3 w-50" style="display: none;">
             <p id="questionState" class="d-flex justify-content-center fs-1"></p>
             <div class="d-flex justify-content-center">
-                <p ><button id="btn0" class="btn btn-dark"></p>
-                <p><button id="btn1" class="btn btn-dark"></p>
-                <p><button id="btn2" class="btn btn-dark"></p>
-                <p><button id="btn3" class="btn btn-dark"></p>
-                <!-- <hr id="inLine" style="display: none;" class="mt-4"> -->
-                <p id="checkAnswer" style="display: none;"></p>
+                <p><button id="btn0" class="btn btn-dark m-2"></p>
+                <p><button id="btn1" class="btn btn-dark m-2"></p>
+                <p><button id="btn2" class="btn btn-dark m-2"></p>
+                <p><button id="btn3" class="btn btn-dark m-2"></p>
             </div>
         </div>
         <!-- finish score-->
         <div id="finishBox" class="bg-light rounded p-3 w-50" style="display: none;">
             <p class="d-flex justify-content-center fs-1">You Are Done!</p>
-            <p class="fs-4 text-wrap">Please review your final score:<span id=finalScore></span></p>
-            <form class="fs-4 text-wrap">
-                <p class="fs-4 text-wrap">Please enter your initials: <input id="userIdInput" type="text" size="2"></p>
+            <p class="fs-4 d-flex justify-content-center">Please review your final score:<span id=finalScore></span></p>
+            <form>
+                <p class="fs-4 d-flex justify-content-center">Please enter your initials: <input id="userIdInput" type="text" size="2"></p>
+                <div class="d-flex justify-content-center">
                 <button type="submit" id="highScoreSubmit" class="d-flex justify-content-center btn btn-dark">submit</button>
+            </div>
             </form>
         </div>
         <!-- highscore--> 
@@ -69,7 +69,7 @@
             <div id="listOfScores">
 
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-evenly">
                 <button onClick="window.location.reload();" id="backBtn" class="btn btn-dark">back</button>
                 <button type="submit" id="clearBtn" class="btn btn-dark">clear highscores</button>
             </div>
@@ -83,7 +83,3 @@
 
 </html>
 
-<!-- <div class="row">
-            <a type="button" id="score" onclick="showHighScores()">View High Scores</a>
-            <a><span id="counter"></span></a>
-        </div> -->
