@@ -66,7 +66,7 @@ let delta = document.getElementById("btn3");
 
 let finishBox = document.getElementById("finishBox");
 let finalScore = document.getElementById("finalScore");
-let userInput = document.getElementById("userInput")
+let userIdInput = document.getElementById("userIdInput")
 let highScoreSubmit = document.getElementById("highScoreSubmit");
 
 let highScoreBox = document.getElementById("highScoreBox");
@@ -195,7 +195,7 @@ if (savedHighScores === null) {
 }
 
 var userScore = {
-    initials: userInput.value,
+    initials: userIdInput.value,
     score: finalScore.textContent,
 
 };
@@ -231,7 +231,7 @@ function showHighScores() {
         listOfScores.appendChild(eachHighScore);
     }
 };
-
+debugger;
 
 
 
