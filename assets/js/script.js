@@ -80,8 +80,6 @@ let correct = 0;
 let questionNumber = 0;
 
 // event listeners
-
-
 startQuizBtn.addEventListener("click", start);
 alpha.addEventListener("click", chooseAlpha);
 bravo.addEventListener("click", chooseBravo);
@@ -96,11 +94,27 @@ highScoreSubmit.addEventListener("click", function(event) {
 highScoreList.addEventListener("click", function() {
     highScoreBox.style.display = "block";
     startBox.style.display = "none";
+
+    let savedHighScores = localStorage.getItem("high scores");
+
+    if (savedHighScores === null) {
+        return;
+    }
+    
+    let storedHighScores = JSON.parse(savedHighScores);
+
+    for (; i < storedHighScores.length; i++) {
+        let eachHighScore = document.createElement("p");
+        eachHighScore.innerHTML = storedHighScores[i].initials + "; " + storedHighScores[i].score;
+        listOfScores.appendChild(eachHighScore);
+    }
+
+    
 });
 
 
 
-
+// quiz start
 function start() {
     questionIndex = 0;
     totalTime = 60;
@@ -126,7 +140,7 @@ function start() {
     showQuiz();
 
 };
-
+// quiz array is passed through
 function showQuiz() {
     nextQuestion();
 }
@@ -226,12 +240,12 @@ function showHighScores() {
     let storedHighScores = JSON.parse(savedHighScores);
 
     for (; i < storedHighScores.length; i++) {
-        let eachHighScore = documnet.createElement("p");
+        let eachHighScore = document.createElement("p");
         eachHighScore.innerHTML = storedHighScores[i].initials + "; " + storedHighScores[i].score;
         listOfScores.appendChild(eachHighScore);
     }
 };
-debugger;
+
 
 
 
