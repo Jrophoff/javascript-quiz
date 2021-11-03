@@ -17,7 +17,7 @@
         <div class="container d- flex bg-dark">
             <div  class="row">
                 <div id="highScoreBtn" class="col d-flex text-white justify-content-start">
-                    <a type="button" id="highScoreList">View High Scores</a>
+                    <a type="button" id="highScoreList">View Player Scores</a>
                 </div>
                 <div id="timer" class="col d-flex text-white justify-content-end">
                     <p></p>Time:<span id="timeLeft"></span>
@@ -32,7 +32,7 @@
         <div id="startBox" class="bg-light rounded p-3 w-50">
             <p class="d-flex justify-content-center fs-1">Coding Quiz Challenge</p>
             <p class="fs-4 text-wrap"> Try to answer the following code-related questions within the time limit.
-                keep in mind that incorrect answers will withdraw ten seconds from your time, while correct answers will deposit 5 seconds to your time. You will start with 30 seconds on the clock!
+                Keep in mind that incorrect answers will withdraw ten seconds from your time, while correct answers will deposit 5 seconds to your time. You will start with 30 seconds on the clock!
             <div class="d-flex justify-content-center">
                 <button id="startQuizBtn" class="btn btn-start btn-dark">
                     Start Quiz
@@ -65,13 +65,13 @@
         </div>
         <!-- highscore--> 
         <div id="highScoreBox" class="bg-light rounded p-3 w-50" style="display: none;">
-            <p class="d-flex justify-content-center fs-1">High Scores</p>
+            <p class="d-flex justify-content-center fs-1">Player Scores</p>
             <div id="listOfScores">
 
             </div>
             <div class="d-flex justify-content-evenly">
-                <button onClick="window.location.reload();" id="backBtn" class="btn btn-dark">back</button>
-                <button onClick="window.location.reload();" type="submit" id="clearBtn" class="btn btn-dark">clear highscores</button>
+                <button onClick="window.location.reload();" id="backBtn" class="btn btn-dark">Back</button>
+                <button onClick="window.location.reload();" type="submit" id="clearBtn" class="btn btn-dark">Clear Scores</button>
             </div>
         </div>
     </div>

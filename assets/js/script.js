@@ -69,7 +69,7 @@ const questions = [
     },
 
     {
-        question: "Conitionals are code structures used to test if an expression returns __________ or not?",
+        question: "Conditionals are code structures used to test if an expression returns __________ or not?",
         option: [
             "1. false",
             "2. right",
@@ -79,7 +79,7 @@ const questions = [
     },
 
     {
-        question: "What method removes focus from the current window",
+        question: "What method removes focus from the current window?",
         option: [
             "1. close()",
             "2. moveTo()",
@@ -89,7 +89,7 @@ const questions = [
     },
 
     {
-        question: "String values must be enclosed within __________ when being assigned to variables",
+        question: "String values must be enclosed within __________ when being assigned to variables.",
         option: [
             "1. commas",
             "2. curly brackets",
@@ -138,7 +138,7 @@ bravo.addEventListener("click", chooseBravo);
 charlie.addEventListener("click", chooseCharlie);
 delta.addEventListener("click", chooseDelta);
 
-// clear high scores
+// clear scores
 clearBtn.addEventListener("click", function () {
     localStorage.removeItem("high scores")
 });
@@ -148,7 +148,7 @@ highScoreSubmit.addEventListener("click", function (event) {
     highScores(event);
 });
 
-// view high scores
+// view scores
 highScoreList.addEventListener("click", function () {
     highScoreBox.style.display = "block";
     startBox.style.display = "none";
@@ -163,7 +163,7 @@ highScoreList.addEventListener("click", function () {
 
     for (; i < storedHighScores.length; i++) {
         let eachHighScore = document.createElement("p");
-        eachHighScore.innerHTML = storedHighScores[i].initials + "; " + storedHighScores[i].score;
+        eachHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
         listOfScores.appendChild(eachHighScore);
     }
 });
@@ -255,57 +255,38 @@ function highScores(event) {
 
     // local storage
 
-
     let savedHighScores = localStorage.getItem("high scores");
-    let scoreArray;
-
-    if (savedHighScores === null) {
-        scoreArray = [];
-    } else {
-        scoreArray = JSON.parse(savedHighScores)
-    }
-
-    var userScore = {
-        initials: userIdInput.value,
-        score: finalScore.textContent,
-
-    };
-
-    scoreArray.push(userScore);
-
-    let scoreArrayString = JSON.stringify(scoreArray);
-    window.localStorage.setItem("high scores", scoreArrayString);
-
-    showHighScores()
-
+let scoreArray;
+if (savedHighScores === null) {
+    scoreArray = [];
+} else {
+    scoreArray = JSON.parse(savedHighScores)
 }
-
+var userScore = {
+    initials: userIdInput.value,
+    score: finalScore.textContent,
+};
+scoreArray.push(userScore);
+let scoreArrayString = JSON.stringify(scoreArray);
+window.localStorage.setItem("high scores", scoreArrayString);
+showHighScores()
+}
 var i = 0;
 function showHighScores() {
-
     startBox.style.display = "none";
     questionBox.style.display = "none";
     finishBox.style.display = "none";
     highScoreBox.style.display = "block";
-
     let savedHighScores = localStorage.getItem("high scores");
-
     if (savedHighScores === null) {
         return;
     }
-
-    let storedHighScores = [JSON.parse(savedHighScores),
-        result]
-
+    
+    let storedHighScores = JSON.parse(savedHighScores);
     for (; i < storedHighScores.length; i++) {
         let eachHighScore = document.createElement("p");
         eachHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
         listOfScores.appendChild(eachHighScore);
     }
 };
-
-
-
-
-
 
