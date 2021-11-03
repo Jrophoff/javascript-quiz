@@ -49,7 +49,7 @@ const questions = [
 ]
 
 // element ref
-let highScoreList = document.getElementById("highScoreList")
+let highScoreList = document.getElementById("highScoreList");
 let timer = document.getElementById("timer");
 let timeLeft = document.getElementById("timeLeft");
 let timesUp = document.getElementById("timesUp");
@@ -86,11 +86,17 @@ bravo.addEventListener("click", chooseBravo);
 charlie.addEventListener("click",chooseCharlie);
 delta.addEventListener("click", chooseDelta);
 
+// clear high scores
+clearBtn.addEventListener("click", function() {
+    localStorage.removeItem("high scores")
+});
+
 
 highScoreSubmit.addEventListener("click", function(event) {
     highScores(event);
 });
 
+// view high scores
 highScoreList.addEventListener("click", function() {
     highScoreBox.style.display = "block";
     startBox.style.display = "none";
@@ -108,8 +114,6 @@ highScoreList.addEventListener("click", function() {
         eachHighScore.innerHTML = storedHighScores[i].initials + "; " + storedHighScores[i].score;
         listOfScores.appendChild(eachHighScore);
     }
-
-    
 });
 
 
@@ -120,10 +124,10 @@ function start() {
     totalTime = 60;
     timeLeft.textContent = totalTime;
     
-    
     startBox.style.display = "none";
     questionBox.style.display = "block";
     timer.style.display = "block";
+    highScoreList.style.display = "none"
 
     let myTimer = setInterval(function() {
         totalTime--;

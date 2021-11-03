@@ -14,11 +14,7 @@
 
 ## Description
 
-Built a quiz to test your JavaScript knowledge. The quiz is timed and for every wrong answer you lost 10 seconds.
-
-## Known Bugs
-
-The clear button for highscores is non functioning at the moment.
+Built a quiz to test your JavaScript knowledge. The quiz is timed and for every wrong answer you lose 10 seconds.
 
 ## Screen Shot:
 
