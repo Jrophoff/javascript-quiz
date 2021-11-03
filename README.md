@@ -18,7 +18,7 @@ Built a quiz to test your JavaScript knowledge. The quiz is timed and for every 
 
 ## Known Bugs
 
-I was not able to get the local storage to store the highscores.
+The clear button for highscores is non functioning at the moment.
 
 ## Screen Shot:
 
