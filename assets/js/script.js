@@ -29,7 +29,7 @@ const questions = [
     },
 
     {
-        question: "You can use the __________ function to find out if an expression is ture or false.",
+        question: "You can use the __________ function to find out if an expression is true or false.",
         option: [
             "1. boolean()",
             "2. focus()",
